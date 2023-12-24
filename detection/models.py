@@ -1,5 +1,4 @@
 from django.db import models
-import os
 import torch
 from transformers import AutoTokenizer, AutoModel, AdamW, AutoModelForSequenceClassification
 
@@ -10,7 +9,6 @@ class LLM(models.Model):
 
     model_name = 'roberta-base'
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    # model = AutoModelForSequenceClassification.from_pretrained(os.getcwd() + "\\CodeBERT")
     model = AutoModelForSequenceClassification.from_pretrained(model_name)
 
     def tokenize(self, code):
