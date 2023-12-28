@@ -4,7 +4,9 @@ from . import models
 
 def getlabel(code) -> str:
     l1 = models.LLM()
-    return "vulnerable"
+    token_code = l1.tokenize(code)
+    prediction = l1.detection(token_code)
+    return prediction
 
 
 def detector(request):
