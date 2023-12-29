@@ -39,10 +39,7 @@ class LLM(models.Model):
     device = torch.device("cuda" if use_cuda else "cpu")
 
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-
-    filepath = os.getcwd().split("\\")
-    filepath = "\\".join(filepath)
-    filepath = os.path.join(filepath, "CodeBERT", FILE)
+    filepath = os.path.join(os.getcwd(), FILE)
 
     if os.path.exists(filepath):
         pass
