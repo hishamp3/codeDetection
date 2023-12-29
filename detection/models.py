@@ -61,5 +61,5 @@ class LLM(models.Model):
     def detection(self, token) -> str:
         output = self.model(token['input_ids'], token['attention_mask'])
         logit = (torch.max(torch.exp(output), 1)[1]).data.cpu().numpy()
-        prediction = "vulnerability" if logit[0] == 0 else "Not vulnerability"
+        prediction = "Defective" if logit[0] == 0 else "Not Defective"
         return prediction

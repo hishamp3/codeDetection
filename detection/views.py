@@ -16,4 +16,3 @@ def detector(request):
         return render(request, 'index.html',
                       {'prediction_value': prediction_value, 'code': code})
     return render(request, 'index.html')
-
