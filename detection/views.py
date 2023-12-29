@@ -13,6 +13,7 @@ def detector(request):
     if request.method == 'POST':
         code = request.POST['code']
         prediction_value = getlabel(code)
-        return render(request, 'main.html',
+        return render(request, 'index.html',
                       {'prediction_value': prediction_value, 'code': code})
-    return render(request, 'main.html')
+    return render(request, 'index.html')
+

@@ -1,5 +1,6 @@
 from django.db import models
 import os
+import gdown
 from transformers import AutoTokenizer, AutoModel, AdamW, AutoModelForSequenceClassification
 from torch import nn
 import torch
@@ -41,7 +42,12 @@ class LLM(models.Model):
 
     filepath = os.getcwd().split("\\")
     filepath = "\\".join(filepath)
-    filepath = filepath + "\\CodeBERT\\" + FILE
+    filepath = os.path.join(filepath, "CodeBERT", FILE)
+
+    if os.path.exists(filepath):
+        pass
+    else:
+        gdown.download(id='1IlqNQiNhH8FLs2GVKy0mN0JgCXnZPCT3', output=filepath, quiet=False)
 
     model = Classifier()
     model.load_state_dict(torch.load(filepath))
